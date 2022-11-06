@@ -63,12 +63,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 ASGI_APPLICATION = "project.asgi.application"
 
 
+# DATABASES = {
+#     'default': {
+#         'NAME': os.environ.get('NAME_DB'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'USER': os.environ.get('USER_DB'),
+#         'PASSWORD': os.environ.get('PASSWORD_DB')
+#     },
+# }
+
 DATABASES = {
     'default': {
-        'NAME': os.environ.get('NAME_DB'),
+        'NAME': 'drf_server_paprika',
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': os.environ.get('USER_DB'),
-        'PASSWORD': os.environ.get('PASSWORD_DB')
+        'USER': 'admin',
+        'PASSWORD': '123'
     },
 }
 

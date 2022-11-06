@@ -15,7 +15,8 @@ class NotebookAdmin(admin.ModelAdmin):
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
     list_display = main_list_display.copy()
-    list_display.insert(1, 'notebook_link')
+    list_display.insert(1, 'body')
+    list_display.insert(2, 'notebook_link')
 
     @admin.display(description='Блокнот')
     def notebook_link(self, obj):

@@ -7,8 +7,8 @@ from notes.models import Note, Notebook
 from notes.serializers import NoteSerializer, NotebookSerializer
 
 
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
+# @authentication_classes([TokenAuthentication])
+# @permission_classes([IsAuthenticated])
 class NoteViewSet(ModelViewSet):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer

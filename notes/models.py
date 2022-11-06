@@ -23,6 +23,7 @@ class Notebook(ABSLabel):
 
 
 class Note(ABSLabel):
+    body = models.TextField(verbose_name='Тело заметки', null=True, blank=True, default='')
     notebook = models.ForeignKey(Notebook, verbose_name='Блокнот', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
