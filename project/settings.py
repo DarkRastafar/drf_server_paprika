@@ -1,5 +1,10 @@
 import os
+from django.conf.locale.ru import formats as ru_formats
 from dotenv import load_dotenv
+
+
+ru_formats.DATETIME_FORMAT = "d M Y H:i:s"
+ru_formats.TIME_FORMAT = "H:i:s"
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
+    'rest_framework',
     'notes',
 ]
 
@@ -93,8 +100,24 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+if not DEBUG:
+    STATIC_ROOT = ''
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REDIS_HOST = os.environ.get('REDIS_HOST_CONF')
 REDIS_PORT = os.environ.get('REDIS_PORT_CONF')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
