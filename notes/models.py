@@ -38,12 +38,18 @@ class Note(ABSLabel):
 
 
 class Record(models.Model):
-    note = models.ForeignKey(Note, verbose_name='Заметка', on_delete=models.CASCADE, null=True, blank=True)
+    note = models.ForeignKey(
+        Note,
+        verbose_name='Заметка',
+        on_delete=models.CASCADE,
+        null=True, blank=True
+    )
     record = models.FileField(
         'Запись',
         upload_to=get_path_upload_record,
         validators=[FileExtensionValidator(allowed_extensions=['mp3', 'wav'])]
     )
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, null=True, blank=True)
     date_create = models.DateTimeField(verbose_name='Дата загрузки', auto_now_add=True)
 
     def __str__(self):

@@ -24,10 +24,10 @@ class ApiNotesTestCase(TestCase):
 
     def test_put_note(self):
         json_data = {
-            'label': 'Тестовая запись',
+            'label': 'Тестовая запись 2',
             'body': 'Абракадабра Абракадабра Абракадабра',
             'notebook': None,
-            'user': 1
+            'user': 2
         }
         res = requests.put(f'http://127.0.0.1:8000/api/notes/note/10/', json=json_data, headers=self.HEADERS)
         print(res)

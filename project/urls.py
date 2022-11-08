@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
-from notes.views import NoteViewSet, NotebookViewSet
+from notes.views import NoteViewSet, NotebookViewSet, RecordViewSet
 from project.yasg import urlpatterns as yasg_urlpatterns
 
 urlpatterns = [
@@ -13,6 +13,7 @@ urlpatterns = [
 router = DefaultRouter()
 router.register(r'api/notes/note', NoteViewSet)
 router.register(r'api/notes/notebook', NotebookViewSet)
+router.register(r'api/notes/record', RecordViewSet)
 
 
 urlpatterns += [
