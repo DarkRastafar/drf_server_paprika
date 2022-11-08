@@ -3,6 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from notes.views import NoteViewSet, NotebookViewSet
+from project.yasg import urlpatterns as yasg_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,3 +19,5 @@ urlpatterns += [
     path('', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token)
 ]
+
+urlpatterns += yasg_urlpatterns

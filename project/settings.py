@@ -1,6 +1,7 @@
 import os
 from django.conf.locale.ru import formats as ru_formats
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
+from bd_config import (SECRET_KEY, DB_NAME, DB_USERNAME, DB_PASSWORD, REDIS_HOST_CONF, REDIS_PORT_CONF)
 
 
 ru_formats.DATETIME_FORMAT = "d M Y H:i:s"
@@ -8,10 +9,10 @@ ru_formats.TIME_FORMAT = "H:i:s"
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv('main_env.env')
+# load_dotenv('main_env.env')
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = SECRET_KEY
 
 DEBUG = True
 
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'rest_framework',
+    'drf_yasg',
     'notes',
 ]
 
@@ -74,10 +76,10 @@ ASGI_APPLICATION = "project.asgi.application"
 
 DATABASES = {
     'default': {
-        'NAME': 'drf_server_paprika',
+        'NAME': DB_NAME,
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'admin',
-        'PASSWORD': '123'
+        'USER': DB_USERNAME,
+        'PASSWORD': DB_PASSWORD
     },
 }
 
@@ -119,8 +121,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REDIS_HOST = os.environ.get('REDIS_HOST_CONF')
-REDIS_PORT = os.environ.get('REDIS_PORT_CONF')
+REDIS_HOST = REDIS_HOST_CONF
+REDIS_PORT = REDIS_PORT_CONF
 
 
 REST_FRAMEWORK = {

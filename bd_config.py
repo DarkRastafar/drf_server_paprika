@@ -1,0 +1,6 @@
+SECRET_KEY = 'django-insecure-82ig$eb5j$jn448m_wdl%d9*8g=2g-e^yzv@n94hu#m6#v90$h'
+DB_NAME = 'drf_server_paprika'
+DB_USERNAME = 'admin'
+DB_PASSWORD = '123'
+REDIS_HOST_CONF = 'localhost'
+REDIS_PORT_CONF = '6379'
