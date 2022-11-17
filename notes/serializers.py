@@ -1,9 +1,8 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 from notes.models import Note, Notebook, Record
 
 
-class BaseNoteSerializer(serializers.Serializer):
+class BaseNoteSerializer(serializers.ModelSerializer):
     label = serializers.CharField(default='Без названия')
     user = serializers.CharField()
 
@@ -41,12 +40,6 @@ class NoteSerializer(serializers.ModelSerializer):
 
 
 class RecordSerializer(serializers.ModelSerializer):
-
-    # def validate(self, data):
-    #     print(data)
-    #     if data.
-    #         # raise serializers.ValidationError("finish must occur after start")
-    #     return data
 
     class Meta:
         model = Record
